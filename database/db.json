@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "_id": "s%xGrUN%lAxa#^S",
+      "name": "Musab Javed",
+      "email": "musab@email.com",
+      "password": "$2a$10$jUjjrHtSjlss7v03X.MdBetT1/8fUwERIh2sfIQl2O1WzqL9HoJ3G",
+      "isBlocked": false
+    }
+  ]
+}
