@@ -22,10 +22,13 @@ export const writeDB = (updatedUsers: User) => {
     if (db instanceof Error) {
       return db;
     }
-    const updatedUser = JSON.parse(JSON.stringify(db));
-    updatedUser.users.push(updatedUsers);
-    fs.writeFileSync(DBpath, JSON.stringify(updatedUser, null, 2));
-    return updatedUser;
+    const updateUsers = JSON.parse(JSON.stringify(db));
+    updateUsers.users.push(updatedUsers);
+    const dbWrite = fs.writeFileSync(
+      DBpath,
+      JSON.stringify(updateUsers, null, 2)
+    );
+    return updateUsers;
   } catch (error: any) {
     throw new Error(error?.message);
   }

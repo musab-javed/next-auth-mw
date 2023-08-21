@@ -3,18 +3,21 @@ import Link from "next/link";
 import InputField from "../InputField";
 import { FormEvent, useEffect, useState } from "react";
 import Loader from "../Loader";
+import { useRouter } from "next/navigation";
 
 export default function RegisterForm() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
+
 
   async function onSubmit(event: FormEvent<HTMLButtonElement>){
     console.log('submit called')
     // event.preventDefault();
     setLoading(true);
-    await fetch('/api/auth/register', {
+    const res = await fetch('/api/auth/register', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -22,6 +25,8 @@ export default function RegisterForm() {
     body: JSON.stringify({ email, "name":fullName, password }),
   })
   setLoading(false);
+    if (res.status == 201) router.replace("/login");
+  
   }
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {

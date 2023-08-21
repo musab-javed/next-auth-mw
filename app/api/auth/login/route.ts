@@ -15,7 +15,7 @@ export const POST = async (request: NextRequest) => {
     if (user.isBlocked) {
       return new NextResponse("User is blocked", { status: 400 });
     }
-    const passwordMatch = bcryptjs.compare(password, user.password);
+    const passwordMatch = bcryptjs.compareSync(password, user.password);
     if (!passwordMatch) {
       return new NextResponse("Password is incorrect", { status: 400 });
     }

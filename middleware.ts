@@ -11,7 +11,7 @@ export const middleware = async (
   if (!publicPath && !token) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
-  if (token && publicPath && pathname != "/home") {
+  if (token && publicPath) {
     return NextResponse.redirect(new URL("/home", request.nextUrl));
   }
 };
